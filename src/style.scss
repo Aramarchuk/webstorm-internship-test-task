@@ -45,8 +45,30 @@ body {
 
 .params-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1fr auto 1fr 1fr 1fr;
+  align-items: end;
   gap: 10px;
+}
+
+.swap-btn {
+  flex-shrink: 0;
+  padding: 6px 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  line-height: 1;
+
+  &:hover {
+    background: color.adjust($primary-color, $lightness: 28%);
+    color: $primary-color;
+  }
+
+  &:active {
+    transform: rotate(180deg);
+  }
 }
 
 .param-field {

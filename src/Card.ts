@@ -42,13 +42,17 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
     for (const card of cards) {
         const cardTime = card.timeFunc(n, m)
         const cardMem = card.memoryFunc(n, m)
-        const lowerBound = t > 0 ? t * (fineTune / 100) : 0
-        const timeFits = t === 0 || (cardTime >= lowerBound && cardTime <= t)
-        const memFits = memory === 0 || cardMem <= memory
+        const timeLower = t > 0 ? t * (fineTune / 100) : 0
+        const memLower = memory > 0 ? memory * (fineTune / 100) : 0
+        const timeFits = t === 0 || (cardTime >= timeLower && cardTime <= t)
+        const memFits = memory === 0 || (cardMem >= memLower && cardMem <= memory)
         const mMissing = m === 0 && (usesM(card.time_expr) || usesM(card.memory_expr))
-        const fits = timeFits && memFits && !mMissing
+        const mUnused = m > 0 && !usesM(card.time_expr) && !usesM(card.memory_expr)
+        const fits = timeFits && memFits && !mMissing && !mUnused
 
-        const fitRatio = t > 0 ? Math.min(cardTime / t, 1) : 1
+        const timeRatio = t > 0 ? Math.min(cardTime / t, 1) : 1
+        const memRatio = memory > 0 ? Math.min(cardMem / memory, 1) : 1
+        const fitRatio = Math.min(timeRatio, memRatio)
         card.element.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
 
         card.disabled = !fits

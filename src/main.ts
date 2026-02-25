@@ -32,6 +32,14 @@ function handleParamsChange() {
   renderCards(list, cardsList)
 }
 
+const swapBtn = document.querySelector<HTMLButtonElement>('#swap-nm')!
+swapBtn.addEventListener('click', () => {
+  const tmp = nInput.value
+  nInput.value = mInput.value
+  mInput.value = tmp
+  handleParamsChange()
+})
+
 nInput.addEventListener('input', handleParamsChange)
 mInput.addEventListener('input', handleParamsChange)
 tInput.addEventListener('input', handleParamsChange)
