@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Bubble Sort",
+        "time": "O(n^2)",
+        "memory": "O(1)"
+    },
+    {
+        "name": "Merge Sort",
+        "time": "O(n log n)",
+        "memory": "O(n)"
+    },
+    {
+        "name": "Dijkstra",
+        "time": "O(E + V log V)",
+        "memory": "O(V)"
+    }
+]

@@ -1,0 +1,12 @@
+.card {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+
+    &.dark {
+        background-color: #333;
+        color: #eee;
+    }
+}
