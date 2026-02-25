@@ -45,8 +45,8 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
     for (const card of cards) {
         const cardTime = card.timeFunc(n, m)
         const cardMem = card.memoryFunc(n, m)
-        const timeLower = t > 0 ? t * (fineTune / 100) : 0
-        const memLower = memory > 0 ? memory * (fineTune / 100) : 0
+        const timeLower = t > 0 ? t / (10 ** (8 - fineTune)) : 0
+        const memLower = memory > 0 ? memory / (10 ** (8 - fineTune)) : 0
         const timeFits = t === 0 || (cardTime >= timeLower && cardTime <= t)
         const memFits = memory === 0 || (cardMem >= memLower && cardMem <= memory)
         const mMissing = m === 0 && card.usesM
@@ -56,6 +56,9 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
         const timeRatio = t > 0 ? Math.min(cardTime / t, 1) : 1
         const memRatio = memory > 0 ? Math.min(cardMem / memory, 1) : 1
         const fitRatio = Math.min(timeRatio, memRatio)
+
+        console.log(card.name, memLower, memRatio, fitRatio)
+
         card.element.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
 
         const fmt = (v: number) => Number.isFinite(v) ? v.toLocaleString('en', { maximumFractionDigits: 1 }) : '∞'
