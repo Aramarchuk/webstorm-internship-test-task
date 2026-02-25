@@ -1,7 +1,7 @@
 @mixin btn-base {
     display: block;
     width: 100%;
-    margin-top: 12px;
+    margin-top: auto;
     padding: 5px 10px;
     border: none;
     border-radius: 6px;
@@ -43,7 +43,26 @@
     box-shadow: 0 2px 8px color-mix(in srgb, rgba(34, 197, 94, 0.35) calc(var(--fit-ratio, 1) * 100%), rgba(0, 0, 0, 0.06));
 }
 
+.cardTitle {
+    height: 3rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-bottom: 8px;
+
+    h2 {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+.cardBody {
+    flex: 1;
+    transition: opacity 0.3s, filter 0.3s;
+}
+
 .card {
+    min-height: 160px;
     padding: 16px;
     border-radius: 8px;
     background-color: white;
@@ -51,6 +70,8 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
     transition: background-color 0.3s, color 0.3s, transform 0.2s, border-color 0.4s, box-shadow 0.4s;
+    display: flex;
+    flex-direction: column;
     @include fit-color;
 
     &:hover {
@@ -65,6 +86,7 @@
     &.disabled {
         pointer-events: none;
 
+        .cardTitle,
         .cardBody {
             opacity: 0.4;
             filter: grayscale(0.6);

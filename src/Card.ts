@@ -73,11 +73,15 @@ export function createCard(opts: AlghorithmOptions): AlgorithmCard {
     btn.textContent = '✕ Exclude'
     btn.className = styles.btnExclude
 
+    const title = document.createElement('div')
+    title.className = styles.cardTitle
+    title.append(h2)
+
     const body = document.createElement('div')
     body.className = styles.cardBody
-    body.append(h2, time, memory)
+    body.append(time, memory)
 
-    root.append(body, btn)
+    root.append(title, body, btn)
 
     return { ...opts, disabled: false, timeFunc: makeFunc(opts.time_expr), memoryFunc: makeFunc(opts.memory_expr), element: root, btn }
 }
