@@ -10,6 +10,37 @@
 
 <body>
   <div id="app">
+    <section class="controls-panel" aria-label="Parameters">
+      <h1 class="controls-title">Parameters</h1>
+
+      <div class="params-grid">
+        <label class="param-field" for="n">
+          <span>n</span>
+          <input type="number" id="n" min="0" value="0">
+        </label>
+
+        <label class="param-field" for="m">
+          <span>m</span>
+          <input type="number" id="m" min="0" value="0">
+        </label>
+
+        <label class="param-field" for="T">
+          <span>T</span>
+          <input type="number" id="T" min="0" value="0">
+        </label>
+
+        <label class="param-field" for="M">
+          <span>M</span>
+          <input type="number" id="M" min="0" value="0">
+        </label>
+      </div>
+
+      <label class="param-field param-field--slider" for="tune">
+        <span>fine-tune</span>
+        <input type="range" id="tune" min="0" max="100" step="1" value="0">
+      </label>
+    </section>
+
     <div id="card-list"></div>
   </div>
   <script type="module" src="/src/main.ts"></script>

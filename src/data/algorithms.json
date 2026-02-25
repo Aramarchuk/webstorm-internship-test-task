@@ -1,17 +1,23 @@
 [
     {
         "name": "Bubble Sort",
-        "time": "O(n^2)",
-        "memory": "O(1)"
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(1)",
+        "memory_expr": "1"
     },
     {
         "name": "Merge Sort",
         "time": "O(n log n)",
-        "memory": "O(n)"
+        "time_expr": "n*Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
     },
     {
         "name": "Dijkstra",
-        "time": "O(E + V log V)",
-        "memory": "O(V)"
+        "time": "O(m + n log n)",
+        "time_expr": "m + n*Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
     }
 ]
