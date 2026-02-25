@@ -1,3 +1,47 @@
+@mixin btn-base {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.btnExclude {
+    @include btn-base;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+
+    &:hover {
+        background: #fee2e2;
+        color: #ef4444;
+        border-color: #fca5a5;
+    }
+}
+
+.btnInclude {
+    @include btn-base;
+    background: #129030;
+    color: white;
+
+    &:hover {
+        background: #16a34a;
+    }
+}
+
+.cardBody {
+    transition: opacity 0.3s, filter 0.3s;
+}
+
 .card {
     padding: 16px;
     border-radius: 8px;
@@ -17,8 +61,15 @@
     }
 
     &.disabled {
-        opacity: 0.4;
-        filter: grayscale(0.6);
         pointer-events: none;
+
+        .cardBody {
+            opacity: 0.4;
+            filter: grayscale(0.6);
+        }
+
+        button {
+            pointer-events: all;
+        }
     }
 }
