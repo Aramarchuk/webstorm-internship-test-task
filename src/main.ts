@@ -28,8 +28,7 @@ function handleParamsChange() {
   const m = Number(mInput.value)
   const t = Number(tInput.value)
   const memory = Number(memoryInput.value)
-  void tuner.value // fine-tune: reserved for future use
-  applyParams(cardsList, n, m, t, memory)
+  applyParams(cardsList, n, m, t, memory, Number(tuner.value))
   renderCards(list, cardsList)
 }
 

@@ -36,10 +36,21 @@ export function renderCards(container: Element, cards: AlgorithmCard[]): void {
     container.append(...sorted.map(c => c.element))
 }
 
-export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: number, memory: number): void {
+const usesM = (expr: string): boolean => /\bm\b/.test(expr)
+
+export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: number, memory: number, fineTune: number): void {
     for (const card of cards) {
-        const fits = (t === 0 || card.timeFunc(n, m) <= t) &&
-            (memory === 0 || card.memoryFunc(n, m) <= memory)
+        const cardTime = card.timeFunc(n, m)
+        const cardMem = card.memoryFunc(n, m)
+        const lowerBound = t > 0 ? t * (fineTune / 100) : 0
+        const timeFits = t === 0 || (cardTime >= lowerBound && cardTime <= t)
+        const memFits = memory === 0 || cardMem <= memory
+        const mMissing = m === 0 && (usesM(card.time_expr) || usesM(card.memory_expr))
+        const fits = timeFits && memFits && !mMissing
+
+        const fitRatio = t > 0 ? Math.min(cardTime / t, 1) : 1
+        card.element.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
+
         card.disabled = !fits
         updateCard(card)
     }
