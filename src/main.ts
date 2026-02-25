@@ -20,8 +20,8 @@ cardsList.forEach(card => {
 const tuner = document.querySelector<HTMLInputElement>('#tune')!
 const nInput = document.querySelector<HTMLInputElement>('#n')!
 const mInput = document.querySelector<HTMLInputElement>('#m')!
-const tInput = document.querySelector<HTMLInputElement>('#T')!
-const memoryInput = document.querySelector<HTMLInputElement>('#M')!
+const tInput = document.querySelector<HTMLInputElement>('#time')!
+const memoryInput = document.querySelector<HTMLInputElement>('#memory')!
 
 function handleParamsChange() {
   const n = Number(nInput.value)

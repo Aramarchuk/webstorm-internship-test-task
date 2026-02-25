@@ -14,6 +14,7 @@ body {
   align-items: center;
   background: $secondary-color;
   color: #111827;
+  font-family: 'Manrope', sans-serif;
 }
 
 #app {
@@ -57,6 +58,7 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   font-size: 1rem;
+  font-family: inherit;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   line-height: 1;
@@ -102,6 +104,7 @@ input[type="number"] {
   box-sizing: border-box;
   appearance: textfield;
   -moz-appearance: textfield;
+  font-family: inherit;
   width: 100%;
   padding: 6px 10px;
   border: 1px solid #ccc;

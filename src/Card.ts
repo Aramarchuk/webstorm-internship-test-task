@@ -10,10 +10,13 @@ export interface AlghorithmOptions {
 
 export interface AlgorithmCard extends AlghorithmOptions {
     disabled: boolean
+    usesM: boolean
     timeFunc: (n: number, m: number) => number
     memoryFunc: (n: number, m: number) => number
     element: HTMLElement
     btn: HTMLButtonElement
+    timeValueEl: HTMLElement
+    memoryValueEl: HTMLElement
 }
 
 function makeFunc(expr: string): (n: number, m: number) => number {
@@ -36,7 +39,7 @@ export function renderCards(container: Element, cards: AlgorithmCard[]): void {
     container.append(...sorted.map(c => c.element))
 }
 
-const usesM = (expr: string): boolean => /\bm\b/.test(expr)
+const checkUsesM = (expr: string): boolean => /\bm\b/.test(expr)
 
 export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: number, memory: number, fineTune: number): void {
     for (const card of cards) {
@@ -46,14 +49,18 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
         const memLower = memory > 0 ? memory * (fineTune / 100) : 0
         const timeFits = t === 0 || (cardTime >= timeLower && cardTime <= t)
         const memFits = memory === 0 || (cardMem >= memLower && cardMem <= memory)
-        const mMissing = m === 0 && (usesM(card.time_expr) || usesM(card.memory_expr))
-        const mUnused = m > 0 && !usesM(card.time_expr) && !usesM(card.memory_expr)
+        const mMissing = m === 0 && card.usesM
+        const mUnused = m > 0 && !card.usesM
         const fits = timeFits && memFits && !mMissing && !mUnused
 
         const timeRatio = t > 0 ? Math.min(cardTime / t, 1) : 1
         const memRatio = memory > 0 ? Math.min(cardMem / memory, 1) : 1
         const fitRatio = Math.min(timeRatio, memRatio)
         card.element.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
+
+        const fmt = (v: number) => Number.isFinite(v) ? v.toLocaleString('en', { maximumFractionDigits: 1 }) : '∞'
+        card.timeValueEl.textContent = n > 0 ? fmt(cardTime) : '—'
+        card.memoryValueEl.textContent = n > 0 ? fmt(cardMem) : '—'
 
         card.disabled = !fits
         updateCard(card)
@@ -68,10 +75,15 @@ export function createCard(opts: AlghorithmOptions): AlgorithmCard {
     h2.textContent = opts.name
 
     const time = document.createElement('p')
-    time.textContent = opts.time
+    time.className = styles.complexityRow
+    time.innerHTML = `<span class="${styles.label}">Time</span><span class="${styles.formula}">${opts.time}</span><span class="${styles.value}">—</span>`
 
     const memory = document.createElement('p')
-    memory.textContent = opts.memory
+    memory.className = styles.complexityRow
+    memory.innerHTML = `<span class="${styles.label}">Memory</span><span class="${styles.formula}">${opts.memory}</span><span class="${styles.value}">—</span>`
+
+    const timeValueEl = time.querySelector<HTMLElement>(`.${styles.value}`)!
+    const memoryValueEl = memory.querySelector<HTMLElement>(`.${styles.value}`)!
 
     const btn = document.createElement('button')
     btn.textContent = '✕ Exclude'
@@ -87,5 +99,6 @@ export function createCard(opts: AlghorithmOptions): AlgorithmCard {
 
     root.append(title, body, btn)
 
-    return { ...opts, disabled: false, timeFunc: makeFunc(opts.time_expr), memoryFunc: makeFunc(opts.memory_expr), element: root, btn }
+    const usesM = checkUsesM(opts.time_expr) || checkUsesM(opts.memory_expr)
+    return { ...opts, disabled: false, usesM, timeFunc: makeFunc(opts.time_expr), memoryFunc: makeFunc(opts.memory_expr), element: root, btn, timeValueEl, memoryValueEl }
 }
