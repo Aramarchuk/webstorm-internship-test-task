@@ -6,14 +6,40 @@ $card-bg: #ffffff;
 $card-shadow: rgba(0, 0, 0, 0.1);
 $card-radius: 8px;
 
+:root {
+  --card-bg: #{$card-bg};
+  --card-color: #111827;
+  --card-color-muted: #6b7280;
+  --card-color-secondary: #374151;
+  --card-border: #e5e7eb;
+  --page-bg: #{$secondary-color};
+  --controls-bg: #{$card-bg};
+  --btn-bg: #f1f5f9;
+  --btn-border: #e2e8f0;
+  --btn-color: inherit;
+}
+
+[data-theme="dark"] {
+  --card-bg: #1e293b;
+  --card-color: #e2e8f0;
+  --card-color-muted: #94a3b8;
+  --card-color-secondary: #cbd5e1;
+  --card-border: #334155;
+  --page-bg: #0f172a;
+  --controls-bg: #1e293b;
+  --btn-bg: #1e293b;
+  --btn-border: #475569;
+  --btn-color: #e2e8f0;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $secondary-color;
-  color: #111827;
+  background: var(--page-bg);
+  color: var(--card-color);
   font-family: 'Manrope', sans-serif;
 }
 
@@ -28,7 +54,7 @@ body {
 
 .controls-panel {
   width: min(640px, 100%);
-  background: $card-bg;
+  background: var(--controls-bg);
   border: 2px solid color.adjust($primary-color, $lightness: 22%);
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -44,6 +70,12 @@ body {
   font-weight: 700;
 }
 
+.controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .params-grid {
   display: grid;
   grid-template-columns: 1fr auto 1fr 1fr 1fr;
@@ -54,14 +86,15 @@ body {
 .swap-btn {
   flex-shrink: 0;
   padding: 6px 8px;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
   border-radius: 6px;
   font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   line-height: 1;
+  color: var(--btn-color);
 
   &:hover {
     background: color.adjust($primary-color, $lightness: 28%);

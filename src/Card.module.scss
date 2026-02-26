@@ -35,7 +35,7 @@
 
 .label {
     font-weight: 700;
-    color: #6b7280;
+    color: var(--card-color-muted);
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -43,7 +43,7 @@
 }
 
 .formula {
-    color: #374151;
+    color: var(--card-color-secondary);
     align-self: baseline;
 }
 
@@ -82,10 +82,10 @@
     min-height: 160px;
     padding: 16px;
     border-radius: 8px;
-    background-color: white;
-    color: black;
+    background-color: var(--card-bg);
+    color: var(--card-color);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--card-border);
     transition: background-color 0.3s, color 0.3s, transform 0.2s, border-color 0.4s, box-shadow 0.4s;
     display: flex;
     flex-direction: column;
@@ -93,11 +93,6 @@
 
     &:hover {
         transform: translateY(-2px);
-    }
-
-    &.dark {
-        background-color: #333;
-        color: #eee;
     }
 
     &.disabled {

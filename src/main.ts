@@ -32,6 +32,13 @@ function handleParamsChange() {
   renderCards(list, cardsList)
 }
 
+const themeToggle = document.querySelector<HTMLButtonElement>('#theme-toggle')!
+themeToggle.addEventListener('click', () => {
+  const isDark = document.body.dataset.theme === 'dark'
+  document.body.dataset.theme = isDark ? '' : 'dark'
+  themeToggle.textContent = isDark ? '🌙' : '☀️'
+})
+
 const swapBtn = document.querySelector<HTMLButtonElement>('#swap-nm')!
 swapBtn.addEventListener('click', () => {
   const tmp = nInput.value
