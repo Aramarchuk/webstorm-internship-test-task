@@ -14,6 +14,7 @@ export interface AlgorithmCard extends AlghorithmOptions {
     timeFunc: (n: number, m: number) => number
     memoryFunc: (n: number, m: number) => number
     element: HTMLElement
+    cardEl: HTMLElement
     btn: HTMLButtonElement
     timeValueEl: HTMLElement
     memoryValueEl: HTMLElement
@@ -24,7 +25,7 @@ function makeFunc(expr: string): (n: number, m: number) => number {
 }
 
 export function updateCard(card: AlgorithmCard): void {
-    card.element.classList.toggle(styles.disabled, card.disabled)
+    card.cardEl.classList.toggle(styles.disabled, card.disabled)
     if (card.disabled) {
         card.btn.textContent = '✓ Include'
         card.btn.className = styles.btnInclude
@@ -59,7 +60,7 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
 
         console.log(card.name, memLower, memRatio, fitRatio)
 
-        card.element.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
+        card.cardEl.style.setProperty('--fit-ratio', fitRatio.toFixed(3))
 
         const fmt = (v: number) => Number.isFinite(v) ? v.toLocaleString('en', { maximumFractionDigits: 1 }) : '∞'
         card.timeValueEl.textContent = n > 0 ? fmt(cardTime) : '—'
@@ -71,6 +72,9 @@ export function applyParams(cards: AlgorithmCard[], n: number, m: number, t: num
 }
 
 export function createCard(opts: AlghorithmOptions): AlgorithmCard {
+    const wrapper = document.createElement('div')
+    wrapper.className = styles.cardContainer
+
     const root = document.createElement('div')
     root.className = styles.card
 
@@ -101,7 +105,8 @@ export function createCard(opts: AlghorithmOptions): AlgorithmCard {
     body.append(time, memory)
 
     root.append(title, body, btn)
+    wrapper.append(root)
 
     const usesM = checkUsesM(opts.time_expr) || checkUsesM(opts.memory_expr)
-    return { ...opts, disabled: false, usesM, timeFunc: makeFunc(opts.time_expr), memoryFunc: makeFunc(opts.memory_expr), element: root, btn, timeValueEl, memoryValueEl }
+    return { ...opts, disabled: false, usesM, timeFunc: makeFunc(opts.time_expr), memoryFunc: makeFunc(opts.memory_expr), element: wrapper, cardEl: root, btn, timeValueEl, memoryValueEl }
 }
