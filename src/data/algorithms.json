@@ -1,0 +1,268 @@
+[
+    {
+        "name": "Constant Lookup",
+        "time": "O(1)",
+        "time_expr": "1",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Linear Search",
+        "time": "O(n)",
+        "time_expr": "n",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Binary Search",
+        "time": "O(log n)",
+        "time_expr": "Math.log2(n)",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Jump Search",
+        "time": "O(√n)",
+        "time_expr": "Math.sqrt(n)",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Bubble Sort",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Selection Sort",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Insertion Sort",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Merge Sort",
+        "time": "O(n log n)",
+        "time_expr": "n*Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Quick Sort (average)",
+        "time": "O(n log n)",
+        "time_expr": "n*Math.log2(n)",
+        "memory": "O(log n)",
+        "memory_expr": "Math.log2(n)"
+    },
+    {
+        "name": "Quick Sort (worst)",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(log n)",
+        "memory_expr": "Math.log2(n)"
+    },
+    {
+        "name": "Heap Sort",
+        "time": "O(n log n)",
+        "time_expr": "n*Math.log2(n)",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Counting Sort",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(m)",
+        "memory_expr": "m"
+    },
+    {
+        "name": "Radix Sort",
+        "time": "O(n*m)",
+        "time_expr": "n*m",
+        "memory": "O(n + m)",
+        "memory_expr": "n+m"
+    },
+    {
+        "name": "Bucket Sort",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "DFS",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "BFS",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Topological Sort",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Dijkstra (binary heap)",
+        "time": "O((n + m) log n)",
+        "time_expr": "(n+m)*Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Dijkstra (array)",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Bellman-Ford",
+        "time": "O(n*m)",
+        "time_expr": "n*m",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Floyd-Warshall",
+        "time": "O(n³)",
+        "time_expr": "n**3",
+        "memory": "O(n²)",
+        "memory_expr": "n**2"
+    },
+    {
+        "name": "Kruskal",
+        "time": "O(m log m)",
+        "time_expr": "m*Math.log2(m)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Prim (heap)",
+        "time": "O(m log n)",
+        "time_expr": "m*Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Segment Tree Build",
+        "time": "O(n)",
+        "time_expr": "n",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Segment Tree Query",
+        "time": "O(log n)",
+        "time_expr": "Math.log2(n)",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Fenwick Tree Update",
+        "time": "O(log n)",
+        "time_expr": "Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Fenwick Tree Query",
+        "time": "O(log n)",
+        "time_expr": "Math.log2(n)",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Union-Find (amortized)",
+        "time": "O(log n)",
+        "time_expr": "Math.log2(n)",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "KMP String Search",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(m)",
+        "memory_expr": "m"
+    },
+    {
+        "name": "Rabin-Karp",
+        "time": "O(n + m)",
+        "time_expr": "n+m",
+        "memory": "O(m)",
+        "memory_expr": "m"
+    },
+    {
+        "name": "Trie Insert",
+        "time": "O(n)",
+        "time_expr": "n",
+        "memory": "O(n*m)",
+        "memory_expr": "n*m"
+    },
+    {
+        "name": "Trie Search",
+        "time": "O(n)",
+        "time_expr": "n",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Naive Matrix Multiplication",
+        "time": "O(n³)",
+        "time_expr": "n**3",
+        "memory": "O(n²)",
+        "memory_expr": "n**2"
+    },
+    {
+        "name": "Strassen Matrix Multiplication",
+        "time": "O(n^2.81)",
+        "time_expr": "n**2.81",
+        "memory": "O(n²)",
+        "memory_expr": "n**2"
+    },
+    {
+        "name": "Subset Enumeration",
+        "time": "O(2^n)",
+        "time_expr": "2**n",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Backtracking (generic)",
+        "time": "O(2^n)",
+        "time_expr": "2**n",
+        "memory": "O(n)",
+        "memory_expr": "n"
+    },
+    {
+        "name": "Brute Force Pair Check",
+        "time": "O(n²)",
+        "time_expr": "n**2",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    },
+    {
+        "name": "Brute Force Triplet Check",
+        "time": "O(n³)",
+        "time_expr": "n**3",
+        "memory": "O(1)",
+        "memory_expr": "1"
+    }
+]

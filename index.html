@@ -1,13 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>jb-test-task</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>jb-test-task</title>
+</head>
+
+<body>
+  <div id="welcome-overlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="welcome-modal">
+      <h2 id="welcome-title">How this page works</h2>
+      <p>
+        You can compare algorithm cards by setting a few simple inputs:
+      </p>
+      <ul>
+        <li><strong>n</strong> — the size of your main data (for example, number of items).</li>
+        <li><strong>m</strong> — an extra size value used by some algorithms (for example, edges or buckets).</li>
+        <li><strong>Time</strong> — your maximum acceptable running effort.</li>
+        <li><strong>Memory</strong> — your maximum acceptable memory usage.</li>
+        <li><strong>Fine-tune</strong> — controls how strict the matching is.</li>
+      </ul>
+      <p>
+        The card border color reflects how well a card matches your limits: stronger green means a better fit.
+        With higher <strong>fine-tune</strong>, cards closer to your limits stay highlighted; with lower values,
+        only very safe matches look strongly green.
+      </p>
+      <button id="welcome-close" class="welcome-close-btn" type="button">Start</button>
+    </div>
+  </div>
+
+  <div id="app">
+    <section class="controls-panel" aria-label="Parameters">
+      <div class="controls-header">
+        <h1 class="controls-title">Parameters</h1>
+        <button id="theme-toggle" class="swap-btn" title="Toggle dark mode">🌙</button>
+      </div>
+
+      <div class="params-grid">
+        <label class="param-field" for="n">
+          <span>n</span>
+          <input type="number" id="n" min="0" placeholder="n">
+        </label>
+
+        <button id="swap-nm" class="swap-btn" title="Swap n and m">⇄</button>
+
+        <label class="param-field" for="m">
+          <span>m</span>
+          <input type="number" id="m" min="0" placeholder="m">
+        </label>
+
+        <label class="param-field" for="time">
+          <span>Time</span>
+          <input type="number" id="time" min="0" placeholder="Time">
+        </label>
+
+        <label class="param-field" for="memory">
+          <span>Memory</span>
+          <input type="number" id="memory" min="0" placeholder="Memory">
+        </label>
+      </div>
+
+      <label class="param-field param-field--slider" for="tune">
+        <span>fine-tune</span>
+        <input type="range" id="tune" min="0" max="8" step="0.1" value="0">
+      </label>
+    </section>
+
+    <div id="card-list"></div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
