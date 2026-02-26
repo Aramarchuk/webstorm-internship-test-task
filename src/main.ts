@@ -47,6 +47,28 @@ swapBtn.addEventListener('click', () => {
   handleParamsChange()
 })
 
+const welcomeOverlay = document.querySelector<HTMLElement>('#welcome-overlay')
+const welcomeClose = document.querySelector<HTMLButtonElement>('#welcome-close')
+
+if (welcomeOverlay && welcomeClose) {
+  const closeWelcome = () => {
+    welcomeOverlay.classList.add('hidden')
+  }
+
+  welcomeClose.addEventListener('click', closeWelcome)
+  welcomeOverlay.addEventListener('click', (event) => {
+    if (event.target === welcomeOverlay) {
+      closeWelcome()
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !welcomeOverlay.classList.contains('hidden')) {
+      closeWelcome()
+    }
+  })
+}
+
 nInput.addEventListener('input', handleParamsChange)
 mInput.addEventListener('input', handleParamsChange)
 tInput.addEventListener('input', handleParamsChange)

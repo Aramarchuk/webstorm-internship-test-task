@@ -12,6 +12,28 @@
 </head>
 
 <body>
+  <div id="welcome-overlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="welcome-modal">
+      <h2 id="welcome-title">How this page works</h2>
+      <p>
+        You can compare algorithm cards by setting a few simple inputs:
+      </p>
+      <ul>
+        <li><strong>n</strong> — the size of your main data (for example, number of items).</li>
+        <li><strong>m</strong> — an extra size value used by some algorithms (for example, edges or buckets).</li>
+        <li><strong>Time</strong> — your maximum acceptable running effort.</li>
+        <li><strong>Memory</strong> — your maximum acceptable memory usage.</li>
+        <li><strong>Fine-tune</strong> — controls how strict the matching is.</li>
+      </ul>
+      <p>
+        The card border color reflects how well a card matches your limits: stronger green means a better fit.
+        With higher <strong>fine-tune</strong>, cards closer to your limits stay highlighted; with lower values,
+        only very safe matches look strongly green.
+      </p>
+      <button id="welcome-close" class="welcome-close-btn" type="button">Start</button>
+    </div>
+  </div>
+
   <div id="app">
     <section class="controls-panel" aria-label="Parameters">
       <div class="controls-header">

@@ -43,6 +43,77 @@ body {
   font-family: 'Manrope', sans-serif;
 }
 
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 1000;
+}
+
+.welcome-overlay.hidden {
+  display: none;
+}
+
+.welcome-modal {
+  width: min(620px, 100%);
+  background: var(--card-bg);
+  color: var(--card-color);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+  padding: 18px;
+
+  h2 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0 0 10px;
+    color: var(--card-color-secondary);
+    line-height: 1.5;
+  }
+
+  ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+    display: grid;
+    gap: 6px;
+  }
+
+  li {
+    color: var(--card-color-secondary);
+  }
+}
+
+.welcome-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &:hover {
+    background: color.adjust($primary-color, $lightness: 28%);
+    color: $primary-color;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 #app {
   width: min(960px, 100%);
   padding: 24px;
@@ -199,6 +270,14 @@ input[type="range"] {
 }
 
 @media (max-width: 700px) {
+  .welcome-modal {
+    padding: 14px;
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+
   .controls-panel {
     width: 100%;
   }
